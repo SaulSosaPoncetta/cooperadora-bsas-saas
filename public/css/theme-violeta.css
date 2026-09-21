@@ -1,0 +1,93 @@
+/*
+ * Tema violeta para Bootstrap 5 — Asociaciones Cooperadoras Escolares.
+ * Se carga DESPUÉS de bootstrap.min.css para sobrescribir el color primario.
+ */
+:root {
+    --bs-primary: #7c3aed;
+    --bs-primary-rgb: 124, 58, 237;
+    --bs-primary-text-emphasis: #4c1d95;
+    --bs-primary-bg-subtle: #ede9fe;
+    --bs-primary-border-subtle: #c4b5fd;
+    --bs-link-color: #7c3aed;
+    --bs-link-color-rgb: 124, 58, 237;
+    --bs-link-hover-color: #5b21b6;
+    --bs-link-hover-color-rgb: 91, 33, 182;
+
+    --violeta-50: #f5f3ff;
+    --violeta-100: #ede9fe;
+    --violeta-200: #ddd6fe;
+    --violeta-300: #c4b5fd;
+    --violeta-400: #a78bfa;
+    --violeta-500: #8b5cf6;
+    --violeta-600: #7c3aed;
+    --violeta-700: #6d28d9;
+    --violeta-800: #5b21b6;
+    --violeta-900: #4c1d95;
+}
+
+body {
+    background-color: #f8f7fc;
+}
+
+/* Botones */
+.btn-primary {
+    --bs-btn-bg: var(--violeta-600);
+    --bs-btn-border-color: var(--violeta-600);
+    --bs-btn-hover-bg: var(--violeta-700);
+    --bs-btn-hover-border-color: var(--violeta-700);
+    --bs-btn-active-bg: var(--violeta-800);
+    --bs-btn-active-border-color: var(--violeta-800);
+    --bs-btn-focus-shadow-rgb: 124, 58, 237;
+    --bs-btn-disabled-bg: var(--violeta-600);
+    --bs-btn-disabled-border-color: var(--violeta-600);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--violeta-600);
+    --bs-btn-border-color: var(--violeta-600);
+    --bs-btn-hover-bg: var(--violeta-600);
+    --bs-btn-hover-border-color: var(--violeta-600);
+    --bs-btn-active-bg: var(--violeta-700);
+    --bs-btn-active-border-color: var(--violeta-700);
+}
+
+/* Enlaces, íconos y fondos */
+.text-primary { color: var(--violeta-600) !important; }
+.bg-primary { background-color: var(--violeta-600) !important; }
+.border-primary { border-color: var(--violeta-600) !important; }
+
+a { color: var(--violeta-600); }
+a:hover { color: var(--violeta-800); }
+
+/* Navbar */
+.navbar-brand { color: var(--violeta-700) !important; font-weight: 600; }
+.navbar .nav-link.active {
+    color: var(--violeta-700) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--violeta-600);
+}
+.navbar .nav-link { color: #4b5563; }
+.navbar .nav-link:hover { color: var(--violeta-700); }
+
+/* Formularios */
+.form-control:focus, .form-select:focus {
+    border-color: var(--violeta-400);
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.15);
+}
+.form-check-input:checked {
+    background-color: var(--violeta-600);
+    border-color: var(--violeta-600);
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.15);
+}
+
+/* Badges, tabs, paginación */
+.badge.bg-primary { background-color: var(--violeta-600) !important; }
+.nav-tabs .nav-link.active { color: var(--violeta-700); border-color: var(--violeta-300) var(--violeta-300) #fff; }
+.page-link { color: var(--violeta-600); }
+.page-item.active .page-link { background-color: var(--violeta-600); border-color: var(--violeta-600); }
+
+/* Cards */
+.card { border-radius: 0.75rem; }
+.shadow-sm { box-shadow: 0 1px 3px rgba(76, 29, 149, 0.08), 0 1px 2px rgba(76, 29, 149, 0.06) !important; }
