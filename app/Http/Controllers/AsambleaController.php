@@ -6,6 +6,7 @@ use App\Http\Controllers\Concerns\ManejaExcepciones;
 use App\Models\Asamblea;
 use App\Models\MiembroComision;
 use App\Models\Socio;
+use App\Support\Tenant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -93,7 +94,7 @@ class AsambleaController extends Controller
     {
         $validated = $request->validate([
             'socios_ids' => ['array'],
-            'socios_ids.*' => [Rule::exists('socios', 'id')],
+            'socios_ids.*' => [Tenant::existe('socios')],
         ]);
 
         return $this->ejecutarEnTransaccion(function () use ($validated, $asamblea) {
@@ -111,10 +112,10 @@ class AsambleaController extends Controller
     {
         $validated = $request->validate([
             'resumen_acta' => ['required', 'string'],
-            'presidente_asamblea_id' => ['required', Rule::exists('socios', 'id')],
-            'secretario_actas_id' => ['required', Rule::exists('socios', 'id')],
+            'presidente_asamblea_id' => ['required', Tenant::existe('socios')],
+            'secretario_actas_id' => ['required', Tenant::existe('socios')],
             'firmantes_ids' => ['required', 'array', 'size:2'],
-            'firmantes_ids.*' => [Rule::exists('socios', 'id')],
+            'firmantes_ids.*' => [Tenant::existe('socios')],
         ]);
 
         return $this->ejecutarEnTransaccion(function () use ($validated, $asamblea) {

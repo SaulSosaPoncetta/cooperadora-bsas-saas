@@ -22,6 +22,18 @@
     @endisset
 
     <main class="container py-4">
+        @if (! empty($suscripcionAviso))
+            <div class="alert alert-{{ $suscripcionAviso['tipo'] }} py-2 small">
+                <i class="bi bi-info-circle me-1"></i>{{ $suscripcionAviso['mensaje'] }}
+                @if ($suscripcionAviso['tipo'] !== 'info' && auth()->user()?->esPresidente())
+                    <form method="POST" action="{{ route('suscripcion.pagar') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-link btn-sm p-0 align-baseline alert-link">Pagar el abono</button>
+                    </form>
+                @endif
+            </div>
+        @endif
+
         @if (session('error'))
             <div class="alert alert-danger py-2 small">
                 <i class="bi bi-exclamation-triangle me-1"></i>{{ session('error') }}

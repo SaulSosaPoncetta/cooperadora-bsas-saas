@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\PerteneceAEstablecimiento;
 use Illuminate\Database\Eloquent\Model;
 
 class Bien extends Model
 {
+    use PerteneceAEstablecimiento;
+
     protected $table = 'bienes';
 
     protected $fillable = [

@@ -27,6 +27,14 @@
                     </li>
                 @endcan
 
+                @can('gestionar usuarios')
+                    <li class="nav-item">
+                        <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.*')">
+                            Usuarios
+                        </x-nav-link>
+                    </li>
+                @endcan
+
                 @can('ver socios')
                     <li class="nav-item">
                         <x-nav-link :href="route('socios.index')" :active="request()->routeIs('socios.*')">
@@ -83,6 +91,9 @@
                         {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
+                        @isset($establecimientoActual)
+                            <li><h6 class="dropdown-header">{{ $establecimientoActual->nombre ?: 'Mi cooperadora' }}</h6></li>
+                        @endisset
                         <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>

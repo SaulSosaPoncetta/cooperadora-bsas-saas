@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\PerteneceAEstablecimiento;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 class Socio extends Model
 {
+    use PerteneceAEstablecimiento;
+
     protected $fillable = [
         'nombre',
         'apellido',

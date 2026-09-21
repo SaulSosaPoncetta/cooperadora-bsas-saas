@@ -7,6 +7,7 @@ use App\Models\Establecimiento;
 use App\Models\MiembroComision;
 use App\Models\MovimientoTesoreria;
 use App\Models\Socio;
+use App\Support\Tenant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -79,13 +80,13 @@ class MovimientoTesoreriaController extends Controller
             'concepto' => ['required', 'string', 'max:255'],
             'monto' => ['required', 'numeric', 'min:0.01'],
             'comprobante_numero' => ['nullable', 'string', 'max:100'],
-            'socio_id' => ['nullable', Rule::exists('socios', 'id')],
+            'socio_id' => ['nullable', Tenant::existe('socios')],
             // Art. 14° del Estatuto: la extracción de fondos requiere la
             // firma de dos de entre Presidente/a, Secretario/a y Tesorero/a.
             'autorizado_por' => [
                 'required_if:tipo,egreso',
                 'nullable',
-                Rule::exists('miembros_comision', 'id'),
+                Tenant::existe('miembros_comision'),
             ],
         ]);
 

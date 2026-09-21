@@ -21,6 +21,10 @@ class RolesAndPermissionsSeeder extends Seeder
             // Establecimiento / configuración general
             'gestionar establecimiento',
 
+            // Usuarios de la cooperadora (sólo el/la Presidente/a, que es
+            // el/la administrador/a de su institución)
+            'gestionar usuarios',
+
             // Socios (Art. 19° a 22° Estatuto)
             'ver socios',
             'gestionar socios',

@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\PerteneceAEstablecimiento;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class MiembroComision extends Model
 {
+    use PerteneceAEstablecimiento;
+
     protected $table = 'miembros_comision';
 
     protected $fillable = [

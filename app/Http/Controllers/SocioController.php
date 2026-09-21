@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Concerns\ManejaExcepciones;
 use App\Models\Socio;
 use Illuminate\Http\RedirectResponse;
+use App\Support\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class SocioController extends Controller
@@ -113,7 +115,12 @@ class SocioController extends Controller
         return $request->validate([
             'nombre' => ['required', 'string', 'max:255'],
             'apellido' => ['required', 'string', 'max:255'],
-            'dni' => ['required', 'string', 'max:20', 'unique:socios,dni,'.($socio?->id)],
+            'dni' => [
+                'required', 'string', 'max:20',
+                Rule::unique('socios', 'dni')
+                    ->where('establecimiento_id', Tenant::id() ?? 0)
+                    ->ignore($socio?->id),
+            ],
             'domicilio' => ['nullable', 'string', 'max:255'],
             'telefono' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:255'],

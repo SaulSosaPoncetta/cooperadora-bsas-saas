@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\PerteneceAEstablecimiento;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class MovimientoTesoreria extends Model
 {
+    use PerteneceAEstablecimiento;
+
     protected $table = 'movimientos_tesoreria';
 
     protected $fillable = [

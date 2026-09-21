@@ -16,6 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'suscripcion' => \App\Http\Middleware\VerificarSuscripcion::class,
+        ]);
+
+        // El panel avisa cambios de suscripción por webhook (firmado con HMAC).
+        $middleware->validateCsrfTokens(except: [
+            'webhooks/panel',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

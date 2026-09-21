@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\PerteneceAEstablecimiento;
 use Illuminate\Database\Eloquent\Model;
 
 class Asamblea extends Model
 {
+    use PerteneceAEstablecimiento;
+
     protected $fillable = [
         'tipo',
         'motivo',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Concerns\ManejaExcepciones;
 use App\Models\MiembroComision;
 use App\Models\Socio;
+use App\Support\Tenant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -59,7 +60,7 @@ class ComisionController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'socio_id' => ['required', Rule::exists('socios', 'id')],
+            'socio_id' => ['required', Tenant::existe('socios')],
             'cargo' => ['required', Rule::in(array_keys(MiembroComision::CUPOS))],
             'fecha_inicio' => ['required', 'date'],
         ]);

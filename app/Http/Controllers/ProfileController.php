@@ -48,6 +48,14 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        // El/la Presidente/a es el/la administrador/a de la cooperadora:
+        // si se eliminara, la institución quedaría sin nadie que la administre.
+        if ($user->esPresidente()) {
+            return Redirect::route('profile.edit')->withErrors([
+                'password' => 'El/la Presidente/a no puede eliminar su cuenta. Transferí la presidencia a otro usuario primero.',
+            ], 'userDeletion');
+        }
+
         Auth::logout();
 
         $user->delete();
